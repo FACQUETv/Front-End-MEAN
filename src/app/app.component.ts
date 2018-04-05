@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     ngOnInit(): void {
 
       //At component initialization the 
-      this.todoService.getToDos().subscribe(todos => {
+      this.todoService.getToDos('1').subscribe(todos => {
           //assign the todolist property to the proper http response
           this.todosList = todos
           console.log(todos)

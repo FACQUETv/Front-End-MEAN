@@ -1,6 +1,6 @@
 import ToDo from '../models/todo.model';
 import { Observable } from 'rxjs/Rx';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import {Response} from '@angular/http';
 import { Injectable } from '@angular/core';
 
@@ -24,8 +24,8 @@ export class TodoService {
       }
     
       //Read todo, takes no arguments
-      getToDos(): Observable<ToDo[]>{
-        return this.http.get(this.todoUrl).map(res  => {
+      getToDos(page:string): Observable<ToDo[]>{
+        return this.http.get(this.todoUrl, { params: new HttpParams().set('page',page) }).map(res  => {
           //Maps the response object sent from the server
             
           return res["data"].docs as ToDo[];
